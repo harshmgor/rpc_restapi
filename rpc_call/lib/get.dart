@@ -14,17 +14,8 @@ class getDataState extends State<getData> {
   Future<String> getData() async {
     RpcClient client = new RpcClient();
     client.call("get/").then((var val) {
-      //String a=val;
-      //a=a.replaceAll("'", "\"");
-      //a=a.replaceAll("None", "null");
-      //var a = json.encode(val);
-      //var b = json.decode(a);
-      //data = b['objects'];
-      //print(a);
-      //print(json.decode(a));
       print(json.decode(val));
       setState((){
-        //data=json.decode(a)['objects'];
         data=json.decode(val)['objects'];
       });
 

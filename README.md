@@ -7,15 +7,15 @@ using python, xamarin forms and flutter
 we have used rabbitMQ as messaging broker
 
 
-#get
+#get - 
 python rpc_client.py get/
 
-#post
+#post - 
 python rpc_client.py post/title/[title text]/body/[body text]/
 
-#put
+#put - 
 python rpc_client.py put/[id]/title/[title text]/body/[body text]/
 
-#delete
+#delete - 
 python rpc_client.py delete/[id]/
 

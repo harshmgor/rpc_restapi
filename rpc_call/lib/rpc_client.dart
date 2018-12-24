@@ -12,11 +12,10 @@ class RpcClient {
   String _replyQueueName;
 
   static ConnectionSettings settings = new ConnectionSettings(
-      host : "dinosaur-01.rmq.cloudamqp.com",
+      host : "server",
       //port: 15672,
-      virtualHost: "dszgrpet",
-      authProvider : new PlainAuthenticator("dszgrpet", "Yw5yKoMZqINvp78V63Su7Svw02KyhCcX")
-      //authProvider: new AmqPlainAuthenticator("admin", "admin")
+      virtualHost: "host-name",
+      authProvider : new PlainAuthenticator("username", "password")
   );
 
   RpcClient() : client = new Client(settings : settings) {

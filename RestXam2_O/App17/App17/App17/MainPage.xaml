@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:App17"
+             x:Class="App17.MainPage">
+    <StackLayout>
+        <StackLayout>
+            <Entry Placeholder="Enter Id" x:Name="EntId"></Entry>
+            <Entry Placeholder="Enter Title" x:Name="EntTitle"></Entry>
+            <Entry Placeholder="Enter Body" x:Name="EntBody"></Entry>
+            <StackLayout Orientation="Horizontal">
+                
+                <Button Text="POST" Clicked="onAdd"></Button>
+                <Button Text="PUT" Clicked="onPut"></Button>
+                <Button Text="DELETE" Clicked="onDelete"></Button>
+            </StackLayout>
+        </StackLayout>
+        <ListView x:Name="Post_List">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal">
+                            
+                            <Label Text="{Binding id}"></Label>
+                            <Label Text="{Binding title}"></Label>
+                            <Label Text="{Binding body}"></Label>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+
+</ContentPage>

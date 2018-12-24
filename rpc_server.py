@@ -1,8 +1,13 @@
 #!/usr/bin/env python
 import pika
 import api_request
+import json
 
-connection = pika.BlockingConnection(pika.ConnectionParameters(host='localhost'))
+url = 'amqp://dszgrpet:Yw5yKoMZqINvp78V63Su7Svw02KyhCcX@dinosaur.rmq.cloudamqp.com/dszgrpet'
+params = pika.URLParameters(url)
+connection = pika.BlockingConnection(params)
+
+#connection = pika.BlockingConnection(pika.ConnectionParameters(host='localhost'))
 
 channel = connection.channel()
 
@@ -41,7 +46,7 @@ def on_request(ch, method, props, body):
         exchange='',
         routing_key=props.reply_to,
         properties=pika.BasicProperties(correlation_id=props.correlation_id),
-        body=str(response)
+        body=json.dumps(response)
     )
     ch.basic_ack(delivery_tag=method.delivery_tag)
 

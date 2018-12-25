@@ -1,0 +1,12 @@
+C:\Users\hp\source\repos\App17\App17\App17\bin\Debug\netstandard2.0\App17.deps.json
+C:\Users\hp\source\repos\App17\App17\App17\bin\Debug\netstandard2.0\App17.dll
+C:\Users\hp\source\repos\App17\App17\App17\bin\Debug\netstandard2.0\App17.pdb
+C:\Users\hp\source\repos\App17\App17\App17\obj\Debug\netstandard2.0\App17.csprojAssemblyReference.cache
+C:\Users\hp\source\repos\App17\App17\App17\obj\Debug\netstandard2.0\App.xaml.g.cs
+C:\Users\hp\source\repos\App17\App17\App17\obj\Debug\netstandard2.0\MainPage.xaml.g.cs
+C:\Users\hp\source\repos\App17\App17\App17\obj\Debug\netstandard2.0\App17.csproj.CoreCompileInputs.cache
+C:\Users\hp\source\repos\App17\App17\App17\obj\Debug\netstandard2.0\App17.AssemblyInfoInputs.cache
+C:\Users\hp\source\repos\App17\App17\App17\obj\Debug\netstandard2.0\App17.AssemblyInfo.cs
+C:\Users\hp\source\repos\App17\App17\App17\obj\Debug\netstandard2.0\App17.dll
+C:\Users\hp\source\repos\App17\App17\App17\obj\Debug\netstandard2.0\App17.pdb
+C:\Users\hp\source\repos\App17\App17\App17\obj\Debug\netstandard2.0\XamlC.stamp

@@ -15,7 +15,7 @@ namespace App17
 {
     /*
     creating classes data Meta,Object,RootObject with getter setter method
-    this classes veries as per json fields 
+    this classes varies as per json fields 
     used "http://json2csharp.com/" to auto generate this classes
     which helps us to bind and handles the json responce we gonna get from rpc call
     */

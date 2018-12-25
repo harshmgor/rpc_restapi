@@ -2,7 +2,10 @@
 import pika
 import api_request
 import json
-import queue_configuration as connection
+import queue_configuration as config
+
+params = pika.URLParameters(config.url)
+connection = pika.BlockingConnection(params)
 
 channel = connection.channel()
 

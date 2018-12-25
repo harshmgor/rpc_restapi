@@ -9,7 +9,7 @@ connection = pika.BlockingConnection(params)
 
 channel = connection.channel()
 
-channel.queue_declare(queue='rpc_queue')
+channel.queue_declare(queue=config.queue_name)
 
 url = "http://harshmgor.pythonanywhere.com/api/data/"
 headers = {"Content-Type": "application/json"}

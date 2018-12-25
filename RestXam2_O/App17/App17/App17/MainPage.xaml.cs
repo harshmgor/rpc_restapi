@@ -13,7 +13,12 @@ using System.Collections.ObjectModel;
 
 namespace App17
 {
-    //creating classes for binding response data Meta,Object,RootObject
+    /*
+    creating classes data Meta,Object,RootObject with getter setter method
+    this classes veries as per json fields 
+    used "http://json2csharp.com/" to auto generate this classes
+    which helps us to bind and hendles the json responce we gonna get from rpc call
+    */
     public class Meta
     {
         public int limit { get; set; }
@@ -37,7 +42,10 @@ namespace App17
         public Meta meta { get; set; }
         public List<Object> objects { get; set; }
     }
-    //rpc client class starts here
+    /*
+     client class.
+     It's going to expose a method named call which sends an RPC request and blocks until the answer is received
+    */
     public class RpcClient
     {
         //initilising readonly variables for later uses
@@ -60,6 +68,9 @@ namespace App17
             consumer = new EventingBasicConsumer(channel);
 
             props = channel.CreateBasicProperties();
+            /*
+             generate a unique CorrelationId number and save it
+            */
             var correlationId = Guid.NewGuid().ToString();
             props.CorrelationId = correlationId;
             props.ReplyTo = replyQueueName;
@@ -110,11 +121,14 @@ namespace App17
             var rpcClient = new RpcClient();
             //setting my request method to get
             string sms = "get/";
-            //passing the value to rpcClient.call()
+            /*
+            passing the value to rpcClient.call() this will send the request to the server,
+            and wait for response
+            */
             var response = rpcClient.Call(sms);
 
             //handling the response
-            //decerializing json responce to object
+            //decerializing json string to object
             var post = JsonConvert.DeserializeObject<List<Object>>(response);
             //binding the json object with listview item fields id,title,body
             Post_List.ItemsSource = post;

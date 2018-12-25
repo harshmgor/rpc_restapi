@@ -13,6 +13,7 @@ using System.Collections.ObjectModel;
 
 namespace App17
 {
+    //creating classes for binding response data Meta,Object,RootObject
     public class Meta
     {
         public int limit { get; set; }
@@ -36,8 +37,10 @@ namespace App17
         public Meta meta { get; set; }
         public List<Object> objects { get; set; }
     }
+    //rpc client class starts here
     public class RpcClient
     {
+        //initilising readonly variables for later uses
         private readonly IConnection connection;
         private readonly IModel channel;
         private readonly string replyQueueName;
@@ -47,6 +50,7 @@ namespace App17
 
         public RpcClient()
         {
+            //establising connction with my rabbitmq message brocker
             ConnectionFactory factory = new ConnectionFactory();
             factory.Uri = new Uri("amqp://udpbbklh:Ttvn6qar8lu2aLE-ie3CmvdZ1ReLLg3k@bee.rmq.cloudamqp.com/udpbbklh");
 
@@ -70,7 +74,7 @@ namespace App17
                 }
             };
         }
-
+        //handles the request // CURD method name and user params  
         public string Call(string message)
         {
 
@@ -101,35 +105,44 @@ namespace App17
             InitializeComponent();
         }
         protected override async void OnAppearing() {
-
+        
+            //initilising instance of rpcClient
             var rpcClient = new RpcClient();
+            //setting my request method to get
             string sms = "get/";
+            //passing the value to rpcClient.call()
             var response = rpcClient.Call(sms);
 
+            //handling the response
+            //decerializing json responce to object
             var post = JsonConvert.DeserializeObject<List<Object>>(response);
-            //ObservableCollection<Object> _post = new ObservableCollection<Object>(post.objects as List<Object>);
+            //binding the json object with listview item fields id,title,body
             Post_List.ItemsSource = post;
+            //load the data when app starts
             base.OnAppearing();
-            await DisplayAlert("alert", "sent", "ok");
         }
+        //button event for post method
         private async void onAdd(object sender, System.EventArgs e) {
             var rpcClient = new RpcClient();
+            //setting the values to be passed to call method
             string sms = "post/" + "title/" + EntTitle.Text + "/" + "body/"+ EntBody.Text + "/";
+            //calling the method for post request
             var response = rpcClient.Call(sms);
-            await DisplayAlert("alert", "sent", "ok");
+            await DisplayAlert("alert", "post request sent", "ok");
         }
         private async void onPut(object sender,System.EventArgs e) {
             var rpcClient = new RpcClient();
-            //rpc_client.py put/74/title/title/body/body/
+            //setting the values to be passed to call method
             var sms = "put/" + Convert.ToInt32(EntId.Text) + "/" + "title/" + EntBody.Text + "/" + "body/" + EntBody.Text + "/";
             var response = rpcClient.Call(sms);
-            await DisplayAlert("alert", "sent", "ok");
+            await DisplayAlert("alert", "put request sent", "ok");
         }
         private async void onDelete(object sender,System.EventArgs e) {
             var rpcClient = new RpcClient();
+            //setting the values to be passed to call method
             var sms = "delete/" + Convert.ToInt32(EntId.Text) + "/";
             var response = rpcClient.Call(sms);
-            await DisplayAlert("alert", "sent", "ok");
+            await DisplayAlert("alert", "delete sent", "ok");
         }
     }
 }

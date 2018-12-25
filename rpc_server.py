@@ -41,5 +41,5 @@ def on_request(ch, method, props, body):
     ch.basic_ack(delivery_tag=method.delivery_tag)
 
 
-channel.basic_consume(on_request, queue='rpc_queue')
+channel.basic_consume(on_request, queue=config.queue_name)
 channel.start_consuming()

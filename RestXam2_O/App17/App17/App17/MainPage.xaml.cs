@@ -17,7 +17,7 @@ namespace App17
     creating classes data Meta,Object,RootObject with getter setter method
     this classes varies as per json fields 
     used "http://json2csharp.com/" to auto generate this classes
-    which helps us to bind and handles the json responce we gonna get from rpc call
+    which helps us to bind and handles the json responce we going to get from rpc call
     */
     public class Meta
     {
@@ -48,7 +48,7 @@ namespace App17
     */
     public class RpcClient
     {
-        //initilising readonly variables for later uses
+        //initializing read-only variables for later uses
         private readonly IConnection connection;
         private readonly IModel channel;
         private readonly string replyQueueName;
@@ -58,7 +58,7 @@ namespace App17
 
         public RpcClient()
         {
-            //establising connction with my rabbitmq message brocker
+            //establishing connection with my rabbitmq message broker
             ConnectionFactory factory = new ConnectionFactory();
             factory.Uri = new Uri("amqp://udpbbklh:Ttvn6qar8lu2aLE-ie3CmvdZ1ReLLg3k@bee.rmq.cloudamqp.com/udpbbklh");
 
@@ -69,7 +69,7 @@ namespace App17
 
             props = channel.CreateBasicProperties();
             /*
-             generate a unique CorrelationId number and save it
+             generating a unique CorrelationId number and save it
             */
             var correlationId = Guid.NewGuid().ToString();
             props.CorrelationId = correlationId;
@@ -85,7 +85,11 @@ namespace App17
                 }
             };
         }
-        //handles the request // CURD method name and user params  
+        /*
+        handling the request  
+        crud operation name and user parameters 
+        */
+         
         public string Call(string message)
         {
 
@@ -95,7 +99,7 @@ namespace App17
                 routingKey: "rpc_queue",
                 basicProperties: props,
                 body: messageBytes);
-
+  
             channel.BasicConsume(
                 consumer: consumer,
                 queue: replyQueueName,
@@ -117,7 +121,7 @@ namespace App17
         }
         protected override async void OnAppearing() {
         
-            //initilising instance of rpcClient
+            //initialization of instance of rpcClient
             var rpcClient = new RpcClient();
             //setting my request method to get
             string sms = "get/";

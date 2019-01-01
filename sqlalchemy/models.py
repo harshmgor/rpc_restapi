@@ -7,6 +7,10 @@ Base = declarative_base()
 
 
 class Data(Base):
+    """
+    The Class for table 'data'.
+    Columns : id, title & body
+    """
     __tablename__ = "data"
     id = Column('id', Integer, primary_key=True, autoincrement=True)
     title = Column('title', String)

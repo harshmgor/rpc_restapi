@@ -1,4 +1,8 @@
 #!/usr/bin/env python
+"""
+Four methods to interact with database.
+get(), put(), post(), delete()
+"""
 from models import engine, Data
 from sqlalchemy.orm import sessionmaker
 
@@ -6,6 +10,9 @@ Session = sessionmaker(bind=engine)
 
 
 def get():
+    """
+    The get() will return the all the value from database.
+    """
     session = Session()
     _list = []
     values = session.query(Data).all()
@@ -23,6 +30,9 @@ def get():
 
 
 def post(title, body):
+    """
+        The post() will add a new record in database.
+    """
     session = Session()
 
     data = Data()
@@ -36,6 +46,10 @@ def post(title, body):
 
 
 def put(data_id, title, body):
+    """
+        The put() will will update a record.
+        it will take id to find the record,  and title and body values to update
+    """
     session = Session()
 
     data = session.query(Data).filter(Data.id == data_id).first()
@@ -48,6 +62,9 @@ def put(data_id, title, body):
 
 
 def delete(data_id):
+    """
+        The delete() will remove a record from database
+    """
     session = Session()
 
     session.query(Data).filter(Data.id == data_id).delete()

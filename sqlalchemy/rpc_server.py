@@ -1,4 +1,7 @@
 #!/usr/bin/env python
+"""
+The module to receive RPC calls using RabbitMQ.
+"""
 import pika
 import rpc_query as query
 import json

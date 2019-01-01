@@ -1,4 +1,8 @@
 #!usr/bin/env python
+"""
+The module to make RPC calls using RabbitMQ.
+This will send data to interact with database.
+"""
 import pika
 import uuid
 import sys
